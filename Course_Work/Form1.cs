@@ -13,10 +13,18 @@ namespace Course_Work
     public partial class Form1 : Form
     {
         private bool Mode; // Режим дозволу / заборони введення даних
+        private MajorWork MajorObject;
 
         public Form1()
         {
             this.Mode = true;
+            MajorObject = new MajorWork();
+
+            About A = new About();
+            A.tAbout.Start();
+            A.ShowDialog();
+
+
             InitializeComponent();
         }
 
@@ -48,6 +56,10 @@ namespace Course_Work
                 tClock.Stop();
                 tbInput.Enabled = false;
                 Mode = true;
+                MajorObject.Write(tbInput.Text);
+                MajorObject.Task();
+                label1.Text = MajorObject.Read();
+
             }
 
         }
@@ -57,7 +69,7 @@ namespace Course_Work
             tClock.Stop();
             tClock.Start();
 
-            if ((e.KeyChar >= 'a' && e.KeyChar <= 'z') | (e.KeyChar >= 'A' && e.KeyChar <= 'Z') | (e.KeyChar == (char) 8) | (e.KeyChar == ' '))
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') | (e.KeyChar >= 'A' && e.KeyChar <= 'Z') | (e.KeyChar == (char) 8) | (e.KeyChar == ' '))
             {
                
                 return;
