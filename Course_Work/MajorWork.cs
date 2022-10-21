@@ -12,6 +12,19 @@ namespace Course_Work
         private string Data_second_number; //вхідні дані
         private string Data_third_number; //вхідні дані
 
+        private string SaveFileName;
+        private string OpenFileName;
+
+        public void WriteSaveFileName(string s)
+        {
+            SaveFileName = s;
+        }
+
+        public void WriteOpenFileName(string s)
+        {
+            OpenFileName = s;
+        }
+
         private DateTime TimeBegin;
 
         private string Result; // Поле результату
