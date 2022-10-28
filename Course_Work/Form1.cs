@@ -20,6 +20,7 @@ namespace Course_Work
             this.Mode = true;
             MajorObject = new MajorWork();
             MajorObject.SetTime();
+            MajorObject.Modify = false;
 
             About A = new About();
             A.tAbout.Start();
@@ -186,7 +187,8 @@ namespace Course_Work
         {
             if(sfdSave.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(sfdSave.FileName);
+                MajorObject.WriteSaveFileName(sfdSave.FileName);
+                MajorObject.SaveToFile();
             }
         }
     }
