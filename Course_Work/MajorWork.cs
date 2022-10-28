@@ -55,6 +55,12 @@ namespace Course_Work
             return Result;
         }
 
+        public void NewRec()
+        {
+            this.Data_first_number = "";
+            this.Result = null;
+        }
+
         public void SetTime()
         {
             TimeBegin = DateTime.Now;
@@ -63,6 +69,84 @@ namespace Course_Work
         public DateTime GetTime()
         {
             return TimeBegin;
+        }
+
+        public void ReadFromFile (System.Windows.Forms.DataGridView DG)
+        {
+            try
+            {
+                if(!File.Exists(this.OpenFileName))
+                {
+                    MessageBox.Show("There is no file with such name");
+                }
+
+                Stream S;
+
+                S = File.Open(this.OpenFileName, FileMode.Open);
+
+                Buffer D;
+                object O;
+
+                BinaryFormatter BF = new BinaryFormatter();
+
+                while(S.Position <S.Length)
+                {
+                    O = BF.Deserialize(S);
+                    D = O as Buffer;
+                    if (D == null)
+                        break;
+                }
+
+                S.Close();
+            }
+            catch
+            {
+                MessageBox.Show("File Error");
+            }
+
+        }
+        public bool SaveFileNameExists()
+        {
+            if (this.SaveFileName == null)
+                return false;
+            else return true;
+        }
+
+        public void Generator()
+        {
+            try
+            {
+                if (!File.Exists(this.SaveFileName))
+                {
+                    Key = 1;
+                    return;
+                }
+
+                Stream S;
+
+                S = File.Open(this.SaveFileName, FileMode.Open);
+
+                Buffer D;
+                object O;
+
+                BinaryFormatter BF = new BinaryFormatter();
+
+                while (S.Position < S.Length)
+                {
+                    O = BF.Deserialize(S);
+                    D = O as Buffer;
+                    if (D == null)
+                        break;
+                }
+
+                Key++;
+                S.Close();
+            }
+            catch
+            {
+                MessageBox.Show("File Error");
+            }
+
         }
 
         public void SaveToFile()
@@ -82,6 +166,7 @@ namespace Course_Work
                 D.Data = this.Data_first_number;
                 D.Result = this.Result;
                 D.Key = this.Key;
+                Key++;
 
                 BinaryFormatter BF = new BinaryFormatter();
                 BF.Serialize(S, D);
@@ -92,10 +177,9 @@ namespace Course_Work
             {
                 MessageBox.Show("Error with file");
             }
-
-
-
         }
+
+
 
         //Визначити найбільше середнє арифметичне чисел, що становлять три
         //заданих числа.

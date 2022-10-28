@@ -188,7 +188,36 @@ namespace Course_Work
             if(sfdSave.ShowDialog() == DialogResult.OK)
             {
                 MajorObject.WriteSaveFileName(sfdSave.FileName);
+                MajorObject.Generator();
                 MajorObject.SaveToFile();
+            }
+        }
+
+        private void зберегтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(MajorObject.SaveFileNameExists())
+            {
+                MajorObject.SaveToFile();
+            }
+            else
+            {
+                зберегтиЯкToolStripMenuItem_Click(sender, e);
+            }
+        }
+
+        private void новийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MajorObject.NewRec();
+            tbInput_first_num.Clear();
+            label1.Text = "";
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(MajorObject.Modify)
+            {
+                if (MessageBox.Show("Дані не були збережені. Продовжити вихід?", "УВАГА",MessageBoxButtons.YesNo) == DialogResult.No)
+                    e.Cancel = true; // припинити закриття
             }
         }
     }
