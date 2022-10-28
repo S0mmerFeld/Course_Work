@@ -179,7 +179,8 @@ namespace Course_Work
         {
             if(ofdOpen.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show(ofdOpen.FileName);
+                MajorObject.WriteOpenFileName(ofdOpen.FileName);
+                MajorObject.ReadFromFile(dgwOpen);
             }
         }
 

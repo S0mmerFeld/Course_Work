@@ -89,13 +89,33 @@ namespace Course_Work
 
                 BinaryFormatter BF = new BinaryFormatter();
 
-                while(S.Position <S.Length)
+                System.Data.DataTable MT = new System.Data.DataTable();
+                System.Data.DataColumn cKey = new System.Data.DataColumn("Ключ");
+                System.Data.DataColumn cInput = new System.Data.DataColumn("Вхідні дані");
+                System.Data.DataColumn cResult = new System.Data.DataColumn("Результат");
+
+                MT.Columns.Add(cKey);
+                MT.Columns.Add(cInput);
+                MT.Columns.Add(cResult);
+
+
+
+                while (S.Position <S.Length)
                 {
                     O = BF.Deserialize(S);
                     D = O as Buffer;
                     if (D == null)
                         break;
+
+                    System.Data.DataRow MR;
+                    MR = MT.NewRow();
+                    MR["Ключ"] = D.Key;
+                    MR["Вхідні дані"] = D.Data;
+                    MR["Результат"] = D.Result;
+                    MT.Rows.Add(MR);
                 }
+
+                DG.DataSource = MT;
 
                 S.Close();
             }
@@ -137,6 +157,7 @@ namespace Course_Work
                     D = O as Buffer;
                     if (D == null)
                         break;
+                    Key = D.Key;
                 }
 
                 Key++;
@@ -177,6 +198,8 @@ namespace Course_Work
             {
                 MessageBox.Show("Error with file");
             }
+
+            Modify = false;
         }
 
 

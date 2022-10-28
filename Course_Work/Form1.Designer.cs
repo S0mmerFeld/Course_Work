@@ -53,7 +53,9 @@ namespace Course_Work
             this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sfdSave = new System.Windows.Forms.SaveFileDialog();
             this.ofdOpen = new System.Windows.Forms.OpenFileDialog();
+            this.dgwOpen = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwOpen)).BeginInit();
             this.SuspendLayout();
             // 
             // bStart
@@ -120,7 +122,7 @@ namespace Course_Work
             this.довідкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(651, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1297, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -243,11 +245,20 @@ namespace Course_Work
             this.ofdOpen.FileName = "openFileDialog1";
             this.ofdOpen.Filter = "робочі файли|*.UTO|Усі файли|*.*";
             // 
+            // dgwOpen
+            // 
+            this.dgwOpen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwOpen.Location = new System.Drawing.Point(596, 66);
+            this.dgwOpen.Name = "dgwOpen";
+            this.dgwOpen.Size = new System.Drawing.Size(669, 378);
+            this.dgwOpen.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 370);
+            this.ClientSize = new System.Drawing.Size(1297, 488);
+            this.Controls.Add(this.dgwOpen);
             this.Controls.Add(this.tbInput_third_num);
             this.Controls.Add(this.tbInput_second_num);
             this.Controls.Add(this.tbInput_first_num);
@@ -261,6 +272,7 @@ namespace Course_Work
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwOpen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,6 +303,7 @@ namespace Course_Work
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.SaveFileDialog sfdSave;
         private System.Windows.Forms.OpenFileDialog ofdOpen;
+        private System.Windows.Forms.DataGridView dgwOpen;
     }
 }
 
